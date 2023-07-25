@@ -1,2 +1,1 @@
-# FCD
-experimental AA meta version of UCD
+# Startknet Faucet Contract Deployer
