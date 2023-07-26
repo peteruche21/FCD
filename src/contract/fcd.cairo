@@ -1,13 +1,9 @@
 use starknet::{ContractAddress, class_hash::ClassHash};
 
 #[starknet::interface]
-trait IUFCDMeta<TContractState> {
+trait IUFCDMeta<T> {
     fn deploy_contract(
-        ref self: TContractState,
-        class_hash: ClassHash,
-        salt: felt252,
-        calldata: Span<felt252>,
-        zeroable: bool
+        ref self: T, class_hash: ClassHash, salt: felt252, calldata: Span<felt252>, zeroable: bool
     ) -> ContractAddress;
 }
 
