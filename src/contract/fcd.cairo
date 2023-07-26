@@ -48,15 +48,16 @@ mod UFCDMeta {
             zeroable: bool
         ) -> ContractAddress {
             let deployer = get_caller_address();
-            let from_zero = zeroable;
-            if (from_zero) {
+            if (zeroable) {
                 salt = pedersen(salt, contract_address_to_felt252(deployer));
             }
             let res = deploy_syscall(class_hash, salt, calldata, zeroable);
             let (address, _) = res.unwrap_syscall();
             self
                 .emit(
-                    ContractDeployed { address, deployer, from_zero, class_hash, calldata, salt }
+                    ContractDeployed {
+                        address, deployer, from_zero: zeroable, class_hash, calldata, salt
+                    }
                 );
             address
         }
