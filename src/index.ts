@@ -1,11 +1,12 @@
 import { Command } from "commander";
 import figlet from "figlet";
 import config from "../package.json";
+import { install } from "./lib";
 
 function printLogo() {
   console.log(
-    figlet.textSync("FCDMeta", {
-      font: "Ghost",
+    figlet.textSync("CAIRO", {
+      font: "Small Poison",
       horizontalLayout: "default",
       verticalLayout: "default",
       width: 80,
@@ -22,12 +23,12 @@ program
   .version(`version ${config.version}`);
 
 program
-  .option("compile, -c  [contract]", "Compile your Cairo Contract")
-  .option("declare, -s <contract name>", "Declare your Sierra Class")
-  .option(
-    "deploy, -d <contract name> [-c]",
-    "Deploy an instance of your contract, optionally pass -c to compile first"
-  );
+  .command("install")
+  .description("Install Cairo")
+  .action(() => {
+    printLogo();
+    install();
+  });
 
 program.parse(process.argv);
 

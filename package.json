@@ -2,10 +2,19 @@
   "name": "fcd",
   "version": "1.0.0",
   "description": "starknet universal contract deployer faucet",
+  "license": "MIT",
+  "repository": "peteruche21/fcd",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
   },
   "keywords": [
     "fcd",
@@ -15,15 +24,23 @@
     "contract deployer",
     "starknet deployer"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Peter Anyaogu",
+    "email": "anyaogupeter601@gmail.com",
+    "url": "https://anyaogu.eth.limo"
+  },
   "dependencies": {
     "commander": "^11.0.0",
-    "figlet": "^1.6.0"
+    "figlet": "^1.6.0",
+    "ora": "^5.4.1"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.6",
     "@types/node": "^20.4.4",
     "typescript": "^5.1.6"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/peteruche21/fcd/issues"
+  },
+  "homepage": "https://github.com/peteruche21/fcd#readme"
 }
