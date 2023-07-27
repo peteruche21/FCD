@@ -41,7 +41,7 @@ export const install = () => {
       execSync(
         `curl -L https://github.com/franalgaba/cairo-installer/raw/main/bin/cairo-installer 2>/dev/null | ${shell}`
       );
-      spinner.succeed("Cairo installed!");
+      spinner.succeed("Cairo installed!\n");
     } catch (error: any) {
       spinner.fail(error.message);
       return;
@@ -51,7 +51,8 @@ export const install = () => {
       spinner.start("Adding cairo to PATH...\n");
       console.log("");
       execSync(addToPath(shell));
-      spinner.succeed();
+      spinner.succeed("Cairo Added to PATH!\n");
+      spinner.info("Please restart your terminal and Run `cairo-compile --version` to verify installation\n");
     } catch (error: any) {
       spinner.fail(error.message);
       return;

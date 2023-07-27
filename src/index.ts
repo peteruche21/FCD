@@ -1,11 +1,11 @@
 import { Command } from "commander";
 import figlet from "figlet";
 import config from "../package.json";
-import { install } from "./lib";
+import { install, update } from "./lib";
 
-function printLogo() {
+function printLogo(text?: string) {
   console.log(
-    figlet.textSync("CAIRO", {
+    figlet.textSync(text || "CAIRO", {
       font: "Small Poison",
       horizontalLayout: "default",
       verticalLayout: "default",
@@ -30,24 +30,32 @@ program
     install();
   });
 
+program
+  .command("update")
+  .description("Update Cairo to latest version")
+  .action(() => {
+    printLogo();
+    update();
+  });
+
+program
+  .command("compile")
+  .description("Compile a cairo program or starknet contract")
+  .action(() => {
+    printLogo();
+    console.log("compile");
+  });
+
 program.parse(process.argv);
 
-const options = program.opts();
+// compile [default -c] -p for program -c for contract [path to program or contract/contract folder]
 
-// install
+// node start a local node with katana dojo
 
-// update
+// create-account [alias name]
 
-// compile
+// run [path to program] [-c compile first]
 
-// create-account
-
-// run
-
-// test
-
-// declare
+// declare [contract name] [-c compile first and declare]
 
 // deploy [contract name] [-c compile first and declare] [-l --local]
-
-// node
