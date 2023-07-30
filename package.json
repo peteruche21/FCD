@@ -6,8 +6,13 @@
   "repository": "peteruche21/fcd",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "type": "module",
   "scripts": {
+    "clean": "rimraf dist/* &",
+    "start": "ts-node-esm src/index.mts",
+    "dev": "ts-node-esm src/index.mts --watch src",
     "build": "npx tsc",
+    "start:build": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
@@ -30,9 +35,12 @@
     "url": "https://anyaogu.eth.limo"
   },
   "dependencies": {
+    "@types/inquirer": "^9.0.3",
+    "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "figlet": "^1.6.0",
-    "ora": "^5.4.1"
+    "inquirer": "^9.2.8",
+    "ora": "^6.3.1"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.6",
