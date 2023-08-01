@@ -8,7 +8,7 @@ export const update = (latest?: boolean) => {
     const spinner = ora();
 
     if (error) {
-      spinner.info("Cairo is not installed. run `fcd install` to install cairo\n");
+      spinner.warn(chalk.yellow("Cairo is not installed. run `fcd install` to install cairo\n"));
       return;
     }
 

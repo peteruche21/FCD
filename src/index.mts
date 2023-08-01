@@ -25,9 +25,11 @@ program
 program
   .command("install")
   .description("Install Cairo")
-  .action(() => {
+  .argument("[zsh | bash | fish | other]", "which shell, default: `echo $SHELL`")
+  .action((shell) => {
+    console.log();
     printLogo();
-    install();
+    install(shell);
   });
 
 program
@@ -42,14 +44,10 @@ program
 program
   .command("compile")
   .description("Compile a cairo program or starknet contract")
-  .option("-p, --program [path]", "Path to program or folder containing main.cairo (default: ./src)")
-  .option(
-    "-c, --contract [name | path]",
-    "Contract name, path to contract, or path to contract folder containing cairo_project.toml (default: ./src)"
-  )
-  .action((options) => {
+  .argument("[name | path]", "Contract name, path to contract, or path to contract folder (default: ./src)")
+  .action((contract) => {
     printLogo();
-    compile(options.program, options.contract);
+    compile(contract);
   });
 
 program
@@ -77,14 +75,6 @@ program
   });
 
 program
-  .command("run")
-  .description("Run a starknet program")
-  .action(() => {
-    printLogo();
-    console.log("run");
-  });
-
-program
   .command("declare")
   .description("Declare a starknet contract")
   .action(() => {
@@ -102,21 +92,12 @@ program
 
 program.parse(process.argv);
 
-// install additional tools
-// [x] starknet cli
-// [x] carb
-// [x] katana
-// [x] starknet-foundry
-// [x] warp
-
-// new bootstraps a new starknet project [fcd, carb, foundry, hardhart, warp]
+// new bootstraps a new starknet project [carb, foundry, hardhart]
 
 // node start a local node with katana dojo
 
-// create-account [alias name]
+// account [alias name]
 
-// run [path to program] [-c compile first]
+// declare [contract name] [-c compile first] [-h --handle-cost]
 
-// declare [contract name] [-c compile first and declare] [-h --handle-cost]
-
-// deploy [contract name] [-c compile first and declare] [-l --local || -h --handle-cost]
+// deploy [contract name] [-c compile and declare first] [-l --local || -h --handle-cost]
