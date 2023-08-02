@@ -5,7 +5,11 @@ export const node = () => {
   exec("katana --version 2>/dev/null", (error) => {
     if (error) {
       console.log(
-        chalk.yellow("Katana is not installed. Please run `fcd install` and select katana from list of optional deps.")
+        chalk.yellow(
+          chalk.yellow(
+            "Katana is not installed. Please run `fcd install` and select katana from list of optional deps."
+          )
+        )
       );
       return;
     }
