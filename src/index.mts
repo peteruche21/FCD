@@ -25,7 +25,7 @@ program
 program
   .command("install")
   .description("Install Cairo")
-  .argument("[zsh | bash | fish | other]", "which shell, default: `echo $SHELL`")
+  .argument("[shell]", "which shell, `zsh | bash | fish | other`")
   .action((shell) => {
     console.log();
     printLogo();
@@ -44,7 +44,7 @@ program
 program
   .command("compile")
   .description("Compile a cairo program or starknet contract")
-  .argument("[name | path]", "Contract name, path to contract, or path to contract folder (default: ./src)")
+  .argument("<path>", "path to contract, or path to crate")
   .action((contract) => {
     printLogo();
     compile(contract);

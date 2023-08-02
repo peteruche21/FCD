@@ -163,9 +163,8 @@ export const installKatana = (spinner: Ora, shell?: string) => {
   } catch (error) {
     spinner.start("Installing katana ...\n");
     try {
-      execSync(`mkdir ${DOJO_ROOT} 2>/dev/null`);
       execSync(
-        `cd ${DOJO_ROOT} &&  git clone https://github.com/dojoengine/dojo.git . && cargo install --path ./crates/katana --force 2>/dev/null`
+        `mkdir -p ${DOJO_ROOT} && cd ${DOJO_ROOT} &&  git clone https://github.com/dojoengine/dojo.git . && cargo install --path ./crates/katana --force 2>/dev/null`
       );
       spinner.succeed(`katana installed!\n`);
     } catch (error) {
