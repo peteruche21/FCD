@@ -1,11 +1,11 @@
 import { Command } from "commander";
 import figlet from "figlet";
 import config from "../package.json" assert { type: "json" };
-import { compile, install, update } from "./lib/index.mjs";
+import { compile, install, node, scaffold, update } from "./lib/index.mjs";
 
 function printLogo(text?: string) {
   console.log(
-    figlet.textSync(text || "CAIRO", {
+    figlet.textSync(text || "STARKNET", {
       font: "Small Poison",
       horizontalLayout: "default",
       verticalLayout: "default",
@@ -55,23 +55,22 @@ program
   .description("Create a new starknet project")
   .action(() => {
     printLogo();
-    console.log("new");
+    scaffold();
   });
 
 program
   .command("node")
   .description("Start a local node with katana dojo")
   .action(() => {
-    printLogo();
-    console.log("node");
+    node();
   });
 
 program
-  .command("create-account")
-  .description("Create a new starknet account")
+  .command("account")
+  .description("Create and manage starknet accounts")
   .action(() => {
     printLogo();
-    console.log("create-account");
+    console.log("account");
   });
 
 program
